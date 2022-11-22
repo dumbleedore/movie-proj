@@ -4,7 +4,7 @@ import movieAPI from "../../services/movieAPI";
 export const Search = () => {
   const [movie, setMovie] = React.useState("");
   const handleClick = () => {
-    movieAPI.fetchMovie(movie);
+    movieAPI.fetchMovieByTitle(movie);
   };
   return (
     <InputGroup m={2} p={2}>
