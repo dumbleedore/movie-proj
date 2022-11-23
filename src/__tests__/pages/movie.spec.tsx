@@ -1,13 +1,15 @@
 import { render } from "@testing-library/react";
 import { Movie } from "../../pages/movie/movie";
 import { BrowserRouter as Router } from "react-router-dom";
+jest.mock("react-router-dom", () => {
+  return {
+    useLocation: {
+      state: {
+        Title: "teste",
+      },
+    },
+  };
+});
 describe("movie.tsx", () => {
-  it("should render component movie.tsx", () => {
-    const { container } = render(
-      <Router>
-        <Movie />
-      </Router>
-    );
-    expect(container).toBeInTheDocument();
-  });
+  it("render movie component", () => {});
 });

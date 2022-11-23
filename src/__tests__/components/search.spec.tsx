@@ -1,7 +1,11 @@
 import { render, fireEvent } from "@testing-library/react";
 import { Search } from "../../components/search/search";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import movieAPI from "../../services/movieAPI";
-import { BrowserRouter as Router } from "react-router-dom";
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => jest.fn(),
+}));
 describe("search.tsx", () => {
   it("should render search component", () => {
     const { container } = render(
@@ -17,11 +21,12 @@ describe("search.tsx", () => {
         <Search />
       </Router>
     );
-    const handleClick = jest
+    const logSpy = jest
       .spyOn(movieAPI, "fetchMovieByTitle")
-      .mockImplementation((title: string) => Promise.resolve());
-    fireEvent.click(getByText("Search"));
-    expect(handleClick).toBeCalledTimes(1);
+      .mockResolvedValue(() => Promise.resolve());
+    const search = getByText("Search");
+    fireEvent.click(search);
+    expect(logSpy).toHaveBeenCalledTimes(1);
   });
   it("should fire onChange Input", () => {
     const { getByPlaceholderText } = render(

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --maxWorkers 2"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.12",

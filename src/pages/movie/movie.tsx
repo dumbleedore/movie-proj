@@ -2,11 +2,9 @@ import { Center, Flex, Image, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./index.module.css";
-export const Movie = ({ route, navigation }: any) => {
+export const Movie = () => {
   const large = "lg";
   const location = useLocation();
-  console.log(location);
-
   return (
     <div className={styles.wrapper}>
       <Center>
