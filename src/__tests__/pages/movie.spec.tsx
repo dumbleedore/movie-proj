@@ -1,11 +1,11 @@
-import { Home } from "../../pages/home/home";
 import { render } from "@testing-library/react";
+import { Movie } from "../../pages/movie/movie";
 import { BrowserRouter as Router } from "react-router-dom";
-describe("home.tsx", () => {
-  it("should render Home.tsx", () => {
+describe("movie.tsx", () => {
+  it("should render component movie.tsx", () => {
     const { container } = render(
       <Router>
-        <Home />
+        <Movie />
       </Router>
     );
     expect(container).toBeInTheDocument();
