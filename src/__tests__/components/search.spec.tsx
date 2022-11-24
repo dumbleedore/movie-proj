@@ -3,11 +3,12 @@ import {
   fireEvent,
   RenderResult,
   waitFor,
-  waitForElementToBeRemoved,
   cleanup,
 } from "@testing-library/react";
 import { Search } from "../../components/search/search";
 import { BrowserRouter as Router } from "react-router-dom";
+import movieAPI from "../../services/movieAPI";
+import { debug } from "console";
 describe("search.tsx", () => {
   let container: RenderResult<
     typeof import("@testing-library/dom/types/queries"),
@@ -32,7 +33,7 @@ describe("search.tsx", () => {
       expect(spinner).toBeInTheDocument();
     });
   });
-  it("shoul change input", () => {
+  it("should change input", () => {
     const input = container.getByPlaceholderText("Search") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "Game of Thrones" } });
     expect(input.value).toBe("Game of Thrones");
