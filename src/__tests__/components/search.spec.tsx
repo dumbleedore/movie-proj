@@ -8,7 +8,7 @@ import {
 import { Search } from "../../components/search/search";
 import { BrowserRouter as Router } from "react-router-dom";
 import movieAPI from "../../services/movieAPI";
-import { debug } from "console";
+import utils from "../../utils";
 describe("search.tsx", () => {
   let container: RenderResult<
     typeof import("@testing-library/dom/types/queries"),
@@ -37,5 +37,15 @@ describe("search.tsx", () => {
     const input = container.getByPlaceholderText("Search") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "Game of Thrones" } });
     expect(input.value).toBe("Game of Thrones");
+  });
+  it("should not render Page Not found", () => {
+    expect(container.queryByText("Movie Not Found")).not.toBeInTheDocument();
+  });
+  it("should render Page Not Found", async () => {
+    utils.doesMovieNotExists = jest.fn().mockReturnValue(true);
+    fireEvent.click(container.getByText("Search"));
+    await waitFor(() => {
+      expect(container.getByText("Movie Not Found")).toBeInTheDocument();
+    });
   });
 });

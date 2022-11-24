@@ -4,22 +4,19 @@ import movieAPI from "../../services/movieAPI";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import { MovieNotFound } from "../movieNotFound/movieNotFound";
+import utils from "../../utils";
 export const Search = () => {
   const navigate = useNavigate();
   const [movie, setMovie] = React.useState("");
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [movieDoeNotExists, setmovieDoeNotExists] = React.useState(false);
-  const doesMovieNotExists = (data: any): boolean => {
-    return data?.Response == "False";
-  };
+
   const handleClick = async () => {
     setLoading(true);
     setmovieDoeNotExists(false);
     const data = await movieAPI.fetchMovieByTitle(movie);
     setLoading(false);
-
-    console.log(doesMovieNotExists(data));
-    if (doesMovieNotExists(data)) setmovieDoeNotExists(true);
+    if (utils.doesMovieNotExists(data)) setmovieDoeNotExists(true);
     else navigate(`/movie/${data.Title}`, { state: data });
   };
   return isLoading ? (
