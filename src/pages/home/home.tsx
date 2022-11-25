@@ -26,7 +26,7 @@ export const Home = () => {
                   className={styles.unselectable}
                   objectFit="cover"
                   boxSize={"200px"}
-                  src="/popcorn.png"
+                  src="../../../public/popcorn.png"
                 ></Image>
                 <HStack>
                   <Center>
