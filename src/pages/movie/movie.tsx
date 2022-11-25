@@ -1,12 +1,25 @@
 import { Center, Flex, Image, Stack, Text } from "@chakra-ui/react";
-import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import { IconButton } from "@chakra-ui/react";
 export const Movie = () => {
   const large = "lg";
   const location = useLocation();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <div className={styles.wrapper}>
+      <IconButton
+        onClick={handleClick}
+        m={6}
+        w={6}
+        colorScheme="blue"
+        aria-label="Search database"
+        icon={<ArrowBackIcon />}
+      />
       <Center>
         <Stack>
           <Center>

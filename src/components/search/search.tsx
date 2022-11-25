@@ -35,10 +35,14 @@ export const Search = () => {
     <>
       <InputGroup m={2} p={2}>
         <Input
+          m={2}
+          p={2}
           onChange={(e) => setMovie(e.target.value)}
           placeholder="Search"
         />
-        <Button onClick={handleClick}>Search</Button>
+        <Button m={2} p={2} onClick={handleClick}>
+          Search
+        </Button>
       </InputGroup>
       {movieDoeNotExists && <MovieNotFound />}
     </>
