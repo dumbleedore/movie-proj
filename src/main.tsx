@@ -7,7 +7,7 @@ import "./index.module.css";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ChakraProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/movie-proj">
         <Router />
       </BrowserRouter>
     </ChakraProvider>
