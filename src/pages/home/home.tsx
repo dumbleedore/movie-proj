@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { DarkMode } from "../../components/darkMode/darkMode";
 import { Search } from "../../components/search/search";
+import Img from "../../assets/images/popcorn.png";
 export const Home = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -26,7 +27,7 @@ export const Home = () => {
                   className={styles.unselectable}
                   objectFit="cover"
                   boxSize={"200px"}
-                  src="../../../public/popcorn.png"
+                  src={Img}
                 ></Image>
                 <HStack>
                   <Center>
